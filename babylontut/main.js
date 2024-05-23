@@ -36,28 +36,68 @@ const createScene = async function () {
 
   // PARAMETERS FOR A BOX //
 
-  // const box = new BABYLON.MeshBuilder.CreateBox("myBox", {
-  //   size: 0.1,
-  //   width: 2,
-  //   height: 0.05,
-  //   depth: 0.5,
-  //   faceColors: [new BABYLON.Color4(1, 0, 0, 1), BABYLON.Color3.Green()],
-  // });
+  const box = new BABYLON.MeshBuilder.CreateBox("myBox", {
+    size: 0.7,
+    // width: 2,
+    // height: 0.05,
+    // depth: 0.5,
+    // faceColors: [new BABYLON.Color4(1, 0, 0, 1), BABYLON.Color3.Green()]
+    faceUV: [
+      new BABYLON.Vector4(0, 0, 1 / 6, 1),
+      new BABYLON.Vector4(1 / 6, 0, 2 / 6, 1),
+      new BABYLON.Vector4(2 / 6, 0, 3 / 6, 1),
+      new BABYLON.Vector4(3 / 6, 0, 4 / 6, 1),
+      new BABYLON.Vector4(4 / 6, 0, 5 / 6, 1),
+      new BABYLON.Vector4(5 / 6, 0, 1, 1),
+    ],
+    wrap: true,
+  });
+
+  const boxCatMat = new BABYLON.StandardMaterial();
+  box.material = boxCatMat;
+  boxCatMat.emissiveTexture = new BABYLON.Texture("/Texture.png");
+
+  // box.position.x = 1;
+  // box.position = new BABYLON.Vector3(-1, 0.5, 0);
+
+  // box.rotation.x = Math.PI / 4;
+  // box.rotation = new BABYLON.Vector3(0, 0, Math.PI / 6);
+
+  // box.scaling.y = 2;
+  // box.scaling = new BABYLON.Vector3(2, 0.5, 1);
+
+  const utilLayer = new BABYLON.UtilityLayerRenderer(scene);
+
+  // const positionGizmo = new BABYLON.PositionGizmo();
+  // positionGizmo.attachedMesh = box;
+
+  // const rotationGizmo = new BABYLON.RotationGizmo(utilLayer);
+  // rotationGizmo.attachedMesh = box;
+
+  // const scaleGizmo = new BABYLON.ScaleGizmo(utilLayer);
+  // scaleGizmo.attachedMesh = box;
+
+  // const planeGizmo = new BABYLON.PlaneRotationGizmo(
+  //   new BABYLON.Vector3(0, 1, 0),
+  //   BABYLON.Color3.Red(),
+  //   utilLayer
+  // );
+  // planeGizmo.attachedMesh = box;
 
   // PARAMETERS FOR A SPHERE //
 
-  const sphere = new BABYLON.MeshBuilder.CreateSphere(
-    "mySphere",
-    { segments: 50, diameter: 0.5 },
-    scene
-  );
+  // const sphere = new BABYLON.MeshBuilder.CreateSphere(
+  //   "mySphere",
+  //   { segments: 50, diameter: 0.5 },
+  //   scene
+  // );
 
-  const sphereMaterial = new BABYLON.StandardMaterial();
-  sphere.material = sphereMaterial;
+  // const sphereMaterial = new BABYLON.StandardMaterial();
+  // sphere.material = sphereMaterial;
 
-  sphereMaterial.diffuseTexture = new BABYLON.Texture(
-    "/RockWall_baseColor.png"
-  );
+  // sphereMaterial.diffuseTexture = new BABYLON.Texture(
+  //   "/RockWall_baseColor.png"
+  // );
 
   // sphereMaterial.diffuseColor = new BABYLON.Color3(0, 1, 0);
   // sphereMaterial.specularColor = new BABYLON.Color3(1, 0, 0);
@@ -74,10 +114,21 @@ const createScene = async function () {
   // PARAMETERS FOR A PLANE //
 
   // const ground = new BABYLON.MeshBuilder.CreateGround("", {
-  //   height: 10,
+  //   height: 5,
   //   width: 10,
   //   subdivisions: 5,
+  //   subdivisionsX: 10,
   // });
+
+  // const groundCatMat = new BABYLON.StandardMaterial();
+  // ground.material = groundCatMat;
+  // groundCatMat.diffuseTexture = new BABYLON.Texture("/terracota.jpg");
+
+  // groundCatMat.diffuseTexture.uOffset = 1.4;
+  // groundCatMat.diffuseTexture.vOffset = 1.4;
+
+  // groundCatMat.diffuseTexture.uScale = 5;
+  // groundCatMat.diffuseTexture.vScale = 5;
 
   // ground.material = new BABYLON.StandardMaterial();
   // ground.material.wireframe = true;
